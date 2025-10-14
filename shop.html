@@ -4,12 +4,193 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CHARMOUH | Shop</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Reset & base */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #0a0a0a;
+      color: #f1f1f1;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    /* Nav */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px 0;
+      background: #0b0b0b;
+      border-bottom: 1px solid #111;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: #ff3b3b; }
+
+    /* Header */
+    header {
+      text-align: center;
+      padding: 80px 20px 40px;
+      background: url('334884.jpg') center/cover no-repeat;
+      background-attachment: fixed;
+      position: relative;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+    }
+    header h1 {
+      position: relative;
+      font-size: 3rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 2px;
+      z-index: 2;
+    }
+
+    /* Products grid */
+    .shop-container {
+      width: 1200px;
+      max-width: 90%;
+      margin: 60px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 40px;
+    }
+
+    .product-card {
+      background: #111;
+      border: 1px solid #1e1e1e;
+      border-radius: 14px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    }
+
+    .product-image {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+    }
+    .product-image img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.3s ease;
+    }
+    .product-image img.back { opacity: 0; }
+    .product-image:hover img.front { opacity: 0; }
+    .product-image:hover img.back { opacity: 1; }
+
+    .product-info {
+      padding: 20px;
+      text-align: center;
+      flex: 1;
+    }
+    .product-info h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .price {
+      color: #ff3b3b;
+      font-weight: 800;
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+    .product-info button {
+      background-color: #ff3b3b;
+      border: none;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .product-info button:hover { background-color: #ff1a1a; }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed; 
+      z-index: 999; 
+      left: 0;
+      top: 0;
+      width: 100%; 
+      height: 100%; 
+      overflow: auto; 
+      background-color: rgba(0,0,0,0.85);
+    }
+    .modal-content {
+      background-color: #1a1a1a;
+      margin: 10% auto;
+      padding: 30px;
+      border-radius: 12px;
+      width: 400px;
+      text-align: center;
+      color: #fff;
+      position: relative;
+    }
+    .close {
+      position: absolute;
+      top: 12px;
+      right: 18px;
+      color: #fff;
+      font-size: 28px;
+      cursor: pointer;
+    }
+    #confirmBuy {
+      background: #ff3b3b;
+      border: none;
+      padding: 12px 20px;
+      color: #fff;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    #confirmBuy:hover { background: #ff1a1a; }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #0b0b0b;
+      border-top: 1px solid #111;
+      color: #888;
+      font-size: 14px;
+      margin-top: 80px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .shop-container { gap: 20px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+      header h1 { font-size: 2.2rem; }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>CHARMOUH Shop</h1>
-  </header>
 
   <nav>
     <a href="index.html">Home</a>
@@ -18,27 +199,90 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-  <section class="products">
-    <h2>Our T-Shirts</h2>
+  <header>
+    <h1>CHARMOUH SHOP</h1>
+  </header>
 
-    <div class="product">
-      <img src="samcro.png" alt="Classic Tee">
-      <h3>Classic Tee</h3>
-      <p>$25.00</p>
-      <button>Buy Now</button>
+  <!-- Products Grid -->
+  <div class="shop-container">
+    <div class="product-card">
+      <div class="product-image">
+        <img src="samcro.png" alt="Samcro Tee" class="front">
+        <img src="DESIGN112.png" alt="Samcro Tee Back" class="back">
+      </div>
+      <div class="product-info">
+        <h3>Samcro Tee</h3>
+        <p class="price">$20.00</p>
+        <button>Buy Now</button>
+      </div>
     </div>
 
-    <div class="product">
-      <img src="hoodie1.jpg" alt="Dark Hoodie">
-      <h3>Dark Hoodie</h3>
-      <p>$40.00</p>
-      <button>Buy Now</button>
+    <div class="product-card">
+      <div class="product-image">
+        <img src="Untitled81.png" alt="Cutheshit Hoodie" class="front">
+        <img src="Untitled8.png" alt="Cutheshit Hoodie Back" class="back">
+      </div>
+      <div class="product-info">
+        <h3>Cutheshit Hoodie</h3>
+        <p class="price">$25.00</p>
+        <button>Buy Now</button>
+      </div>
     </div>
 
-  </section>
+    <div class="product-card">
+      <div class="product-image">
+        <img src="chilll.png" alt="Chill Guy Jacket" class="front">
+        <img src="chilll1.png" alt="Chill Guy Jacket Back" class="back">
+      </div>
+      <div class="product-info">
+        <h3>Chill Guy Jacket</h3>
+        <p class="price">$28.00</p>
+        <button>Buy Now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Buy Modal -->
+  <div id="buyModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="modalProductName">Product Name</h2>
+      <img id="modalProductImg" src="" alt="" style="width: 300px; margin: 20px 0;">
+      <p id="modalProductPrice">$0.00</p>
+      <label>Quantity:</label>
+      <input type="number" id="productQty" value="1" min="1" style="width:60px; padding:6px; margin-bottom:15px;">
+      <button id="confirmBuy">Buy Now</button>
+    </div>
+  </div>
 
   <footer>
-    <p>&copy; 2025 CHARMOUH</p>
+    &copy; 2025 CHARMOUH. All rights reserved.
   </footer>
+
+<script>
+  const modal = document.getElementById("buyModal");
+  const modalImg = document.getElementById("modalProductImg");
+  const modalName = document.getElementById("modalProductName");
+  const modalPrice = document.getElementById("modalProductPrice");
+
+  document.querySelectorAll(".product-card button").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      const card = e.target.closest(".product-card");
+      modalImg.src = card.querySelector(".product-image img.front").src;
+      modalName.textContent = card.querySelector("h3").textContent;
+      modalPrice.textContent = card.querySelector(".price").textContent;
+      modal.style.display = "block";
+    });
+  });
+
+  document.querySelector(".close").onclick = () => modal.style.display = "none";
+  window.onclick = (event) => { if(event.target == modal) modal.style.display = "none"; }
+
+  document.getElementById("confirmBuy").onclick = () => {
+    alert(`Thank you for buying ${modalName.textContent} x${document.getElementById("productQty").value}!`);
+    modal.style.display = "none";
+  }
+</script>
+
 </body>
 </html>

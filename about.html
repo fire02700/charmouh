@@ -1,4 +1,153 @@
-<section>
-  <h2>About CHARMOUH</h2>
-  <p>CHARMOUH is a dark streetwear clothing brand. We design unique, bold styles for confident people.</p>
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHARMOUH | About</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #0a0a0a;
+      color: #f5f5f5;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px 0;
+      background: #0b0b0b;
+      border-bottom: 1px solid #111;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff3b3b;
+    }
+
+    header {
+      background: url('streetbg.jpg') center/cover no-repeat;
+      height: 60vh;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    header h1 {
+      position: relative;
+      font-size: 3rem;
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+
+    .about-container {
+      width: 1000px;
+      max-width: 90%;
+      margin: 60px auto;
+      text-align: center;
+    }
+
+    .about-container h2 {
+      color: #ff3b3b;
+      font-size: 1.4rem;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+    }
+
+    .about-container p {
+      font-size: 1.1rem;
+      color: #cfcfcf;
+      margin-bottom: 25px;
+    }
+
+    .mission {
+      background: #111;
+      border-radius: 12px;
+      padding: 40px 30px;
+      margin-top: 40px;
+    }
+
+    .mission h3 {
+      color: #ff3b3b;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .mission p {
+      color: #d1d1d1;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #0b0b0b;
+      border-top: 1px solid #111;
+      color: #888;
+      font-size: 14px;
+      margin-top: 80px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <header>
+    <h1>ABOUT CHARMOUH</h1>
+  </header>
+
+  <section class="about-container">
+    <h2>OUR STORY</h2>
+    <p>
+      CHARMOUH was born from the streets — a blend of rebellion, creativity, and identity.
+      We design dark streetwear that speaks loud without saying a word. Every piece we make reflects bold individuality and real emotion.
+    </p>
+
+    <p>
+      Our collections are crafted for those who walk their own path — dreamers, creators, fighters, and the ones who never blend in.
+    </p>
+
+    <div class="mission">
+      <h3>OUR MISSION</h3>
+      <p>
+        To redefine modern streetwear by blending premium comfort with raw artistic energy.
+        CHARMOUH stands for authenticity, culture, and confidence — made for the streets, inspired by the night.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 CHARMOUH. All rights reserved.
+  </footer>
+
+</body>
+</html>

@@ -3,199 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CHARMOUH</title>
+  <title>CHARMOUH | Streetwear</title>
   <style>
- .product-card {
-  position: relative;
-  width: 300px; /* bigger card width */
-  padding: 20px;
-  background-color: #1f1f1f;
-  border-radius: 10px;
-  transition: transform 0.3s;
-}
+    /* CHARMOUH - Streetwear Landing Page */
 
-.image-container {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1/1.2; /* taller container for T-shirt shape */
-  overflow: hidden;
-  border-radius: 10px;
-  margin-bottom: 15px; /* space between image and text */
-}
-
-.image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* keeps image proportion */
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: opacity 0.3s;
-}
-
-.image-container img.back {
-  opacity: 0;
-}
-
-.image-container:hover img.front {
-  opacity: 0;
-}
-
-.image-container:hover img.back {
-  opacity: 1;
-}
-
-.products {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px; /* more space between cards */
-  padding: 50px 20px; /* bigger section padding */
-}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #121212;
-      color: #fff;
+      font-family: "Poppins", sans-serif;
+      background-color: #0a0a0a;
+      color: #f1f1f1;
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
     header {
+      height: 100vh;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.95)),
+                  url('334884.jpg') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      padding: 50px 20px;
-      background: url('334884.jpg') no-repeat center center/cover;
+      padding: 0 20px;
     }
+
     header h1 {
-      background-color: rgba(0,0,0,0.6);
+      font-size: 3rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #cfcfcf;
+      max-width: 600px;
+      margin-bottom: 40px;
+    }
+
+    .btn {
       display: inline-block;
-      padding: 15px 25px;
-      border-radius: 10px;
+      background: #ff3b3b;
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #ff1a1a;
+      transform: translateY(-3px);
     }
 
     nav {
+      position: absolute;
+      top: 20px;
+      right: 30px;
       display: flex;
-      justify-content: center;
-      gap: 20px;
-      background-color: #1f1f1f;
-      padding: 15px 0;
+      gap: 25px;
     }
+
     nav a {
       color: #fff;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: color 0.3s;
     }
 
-    section {
-      padding: 50px 20px;
-      text-align: center;
-    }
-
-    .products {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-    .product {
-      background-color: #1f1f1f;
-      border-radius: 10px;
-      padding: 20px;
-      width: 200px;
-      transition: transform 0.3s;
-    }
-    .product img {
-      width: 100%;
-      border-radius: 10px;
-    }
-    .product:hover {
-      transform: scale(1.05);
+    nav a:hover {
+      color: #ff3b3b;
     }
 
     footer {
       text-align: center;
-      padding: 20px;
-      background-color: #1f1f1f;
-    }
-
-    button {
-      background-color: #ff4d4d;
-      border: none;
-      padding: 10px 20px;
-      color: #fff;
-      font-weight: bold;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-    button:hover {
-      background-color: #ff1a1a;
+      padding: 25px;
+      background: #0b0b0b;
+      border-top: 1px solid #111;
+      color: #888;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
 
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
   <header>
-    <h1>CHARMOUH Clothing Market</h1>
+    <h1>CHARMOUH</h1>
+    <p>Dark. Bold. Streetwear made for those who move different.</p>
+    <a href="shop.html" class="btn">Enter the Store</a>
   </header>
 
- <nav>
-  <a href="index.html">Home</a>
-  <a href="shop.html">Shop</a>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
-</nav>
-
-
-  <section id="home">
-    <h2>Welcome to Our Store</h2>
-    <p>Find the latest stylish clothing items for you.</p>
-  </section>
-
-  <section id="shop" class="products">
-    <h2>Our Products</h2>
-
-<div class="product-card">
-  <div class="image-container">
-    <img src="samcro.png" alt="T-shirt Front" class="front">
-    <img src="DESIGN112.png" alt="T-shirt Back" class="back">
-  </div>
-  <h3>samcro</h3>
-  <p>$20.00</p>
-  <button>Buy Now</button>
-</div>
-
-  <div class="product-card">
-  <div class="image-container">
-    <img src="Untitled81.png" alt="Hoodie Front" class="front">
-    <img src="Untitled8.png" alt="Hoodie Back" class="back">
-  </div>
-  <h3>cutheshit</h3>
-  <p>$25.00</p>
-  <button>Buy Now</button>
-</div>
-
-  <div class="product-card">
-  <div class="image-container">
-    <img src="chilll.png" alt="Jacket Front" class="front">
-    <img src="chilll1.png" alt="Jacket Back" class="back">
-  </div>
-  <h3>chill guy</h3>
-  <p>$28.00</p>
-  <button>Buy Now</button>
-</div>
-  </section>
-
-  <section id="about">
-    <h2>About Us</h2>
-    <p>We create high-quality clothing for those who love style and comfort. Our mission is to bring dark, trendy fashion to everyone.</p>
-  </section>
-
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p>Email: fire02700@gmail.com</p>
-  </section>
-
   <footer>
-    &copy; 2025 Dark Clothing Market
+    &copy; 2025 CHARMOUH. All rights reserved.
   </footer>
 
 </body>
