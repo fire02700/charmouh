@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Bag | CHARMOUH</title>
+<style>
+  body {
+    background-color: #0a0a0a;
+    color: #f1f1f1;
+    font-family: "Poppins", sans-serif;
+  }
+  nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+    background: #0b0b0b;
+  }
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  nav a:hover { color: #ff3b3b; }
+
+  .bag-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: #111;
+    padding: 30px;
+    border-radius: 12px;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #222;
+    padding: 15px 0;
+  }
+  .item img {
+    width: 80px;
+    border-radius: 10px;
+    margin-right: 20px;
+  }
+  .item-info {
+    flex: 1;
+  }
+  .price {
+    color: #ff3b3b;
+    font-weight: bold;
+  }
+  .checkout {
+    text-align: right;
+    margin-top: 20px;
+  }
+  .checkout a {
+    background: #ff3b3b;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="shop.html">Shop</a>
+  <a href="bag.html">Bag</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<div class="bag-container">
+  <h1>Your Bag</h1>
+  <div id="bagItems"></div>
+  <div class="checkout">
+    <a href="buy.html">Proceed to Checkout</a>
+  </div>
+</div>
+
+<script>
+  const bagItems = document.getElementById("bagItems");
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  if(cart.length === 0){
+    bagItems.innerHTML = "<p>Your bag is empty.</p>";
+  } else {
+    cart.forEach(item => {
+      bagItems.innerHTML += `
+        <div class="item">
+          <img src="${item.img}" alt="${item.name}">
+          <div class="item-info">
+            <h3>${item.name}</h3>
+            <p>Quantity: ${item.quantity}</p>
+            <p class="price">${item.price}</p>
+          </div>
+        </div>
+      `;
+    });
+  }
+</script>
+</body>
+</html>
