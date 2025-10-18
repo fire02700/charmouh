@@ -182,12 +182,6 @@
       font-size: 14px;
       margin-top: 80px;
     }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .shop-container { gap: 20px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
-      header h1 { font-size: 2.2rem; }
-    }
   </style>
 </head>
 <body>
@@ -195,6 +189,7 @@
   <nav>
     <a href="index.html">Home</a>
     <a href="shop.html">Shop</a>
+    <a href="bag.html">Bag</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </nav>
@@ -251,7 +246,7 @@
       <p id="modalProductPrice">$0.00</p>
       <label>Quantity:</label>
       <input type="number" id="productQty" value="1" min="1" style="width:60px; padding:6px; margin-bottom:15px;">
-      <button id="confirmBuy">Buy Now</button>
+      <button id="confirmBuy">Add to Bag</button>
     </div>
   </div>
 
@@ -259,30 +254,45 @@
     &copy; 2025 CHARMOUH. All rights reserved.
   </footer>
 
-<script>
-  const modal = document.getElementById("buyModal");
-  const modalImg = document.getElementById("modalProductImg");
-  const modalName = document.getElementById("modalProductName");
-  const modalPrice = document.getElementById("modalProductPrice");
+  <script>
+    const modal = document.getElementById("buyModal");
+    const modalImg = document.getElementById("modalProductImg");
+    const modalName = document.getElementById("modalProductName");
+    const modalPrice = document.getElementById("modalProductPrice");
 
-  document.querySelectorAll(".product-card button").forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      const card = e.target.closest(".product-card");
-      modalImg.src = card.querySelector(".product-image img.front").src;
-      modalName.textContent = card.querySelector("h3").textContent;
-      modalPrice.textContent = card.querySelector(".price").textContent;
-      modal.style.display = "block";
+    // Open modal
+    document.querySelectorAll(".product-card button").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const card = e.target.closest(".product-card");
+        modalImg.src = card.querySelector(".product-image img.front").src;
+        modalName.textContent = card.querySelector("h3").textContent;
+        modalPrice.textContent = card.querySelector(".price").textContent;
+        modal.style.display = "block";
+      });
     });
-  });
 
-  document.querySelector(".close").onclick = () => modal.style.display = "none";
-  window.onclick = (event) => { if(event.target == modal) modal.style.display = "none"; }
+    // Close modal
+    document.querySelector(".close").onclick = () => modal.style.display = "none";
+    window.onclick = (event) => { if(event.target == modal) modal.style.display = "none"; }
 
-  document.getElementById("confirmBuy").onclick = () => {
-    alert(`Thank you for buying ${modalName.textContent} x${document.getElementById("productQty").value}!`);
-    modal.style.display = "none";
-  }
-</script>
+    // Add to Bag
+    document.getElementById("confirmBuy").onclick = () => {
+      const qty = parseInt(document.getElementById("productQty").value);
+      const item = {
+        name: modalName.textContent,
+        price: modalPrice.textContent,
+        img: modalImg.src,
+        quantity: qty
+      };
+
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push(item);
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      alert(`${item.name} x${qty} added to your bag.`);
+      modal.style.display = "none";
+    }
+  </script>
 
 </body>
 </html>
